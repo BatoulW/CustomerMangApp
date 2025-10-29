@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { CustMangService, Customer } from '../../services/cust-mang.service';
-import { CustomerDialog } from '../../customer-dialog/customer-dialog';
+import { CustomerDialog } from '../customer-dialog/customer-dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
