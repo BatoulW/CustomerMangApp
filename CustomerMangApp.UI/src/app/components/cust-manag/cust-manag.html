@@ -1,0 +1,47 @@
+<div class="cust-manag-container">
+  <mat-toolbar color="primary">
+    <span>Customer Management</span>
+    <span class="spacer"></span>
+    <button mat-raised-button color="accent" (click)="openCreateDialog()">Add Customer</button>
+  </mat-toolbar>
+
+  <mat-card>
+    <mat-table [dataSource]="customers" class="mat-elevation-z8" matSort>
+      <ng-container matColumnDef="customerId">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+        <mat-cell *matCellDef="let customer"> {{customer.customerId}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="customerName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell *matCellDef="let customer"> {{customer.customerName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+        <mat-cell *matCellDef="let customer"> {{customer.email}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="isActive">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Is Active? </mat-header-cell>
+        <mat-cell *matCellDef="let customer"> {{customer.isActive}} </mat-cell>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+        <mat-cell *matCellDef="let customer">
+          <button mat-icon-button color="primary" (click)="openEditDialog(customer)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteCustomer(customer.customerId)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </mat-card>
+</div>

@@ -1,0 +1,21 @@
+.dashboard-container {
+  padding: 1px;
+}
+
+mat-grid-list {
+  width: 100%;
+  --mat-grid-list-gutter-size: 4px; 
+}
+
+.dashboard-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+mat-card {
+  max-width: 350px; 
+  max-height: 250px;
+  padding: 4px;
+  box-sizing: border-box; 
+}

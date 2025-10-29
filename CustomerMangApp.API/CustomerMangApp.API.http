@@ -1,0 +1,10 @@
+@CustomerMangApp.API_HostAddress = http://localhost:5275
+
+GET {{CustomerMangApp.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{CustomerMangApp.API_HostAddress}}/customers
+Accept: application/json
+

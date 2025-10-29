@@ -1,0 +1,52 @@
+<h2 mat-dialog-title>{{ data.customer ? 'Edit Customer' : 'Add Customer' }}</h2>
+<mat-dialog-content>
+  <form [formGroup]="customerForm">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="customerName" />
+      @if(customerForm.get('customerName')?.touched || customerForm.get('customerName')?.dirty){
+      <mat-error>
+        customer Name is required
+      </mat-error>
+      }
+      @if(customerForm.get('customerName')?.hasError('minlength')){
+      <mat-error>
+        customer Name must be at least 3 characters long
+      </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+      @if(customerForm.get('email')?.hasError('required')){
+      <mat-error>
+        Email is required
+      </mat-error>
+      }
+      @if(customerForm.get('email')?.hasError('email')){
+      <mat-error>
+        Enter a valid email
+      </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Is Active</mat-label>
+      <mat-select formControlName="isActive">
+        <mat-option [value]="true">Yes</mat-option>
+        <mat-option [value]="false">No</mat-option>
+      </mat-select>
+      @if(customerForm.get('isActive')?.hasError('required')){
+      <mat-error>
+        Please select Yes or No
+      </mat-error>
+      }
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="save()" [disabled]="!customerForm.valid">
+    {{ data.customer ? 'Update' : 'Save' }}
+  </button>
+</mat-dialog-actions>
